@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TelloLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:TelloLibrary.RotateClockwise">
+            <summary>
+            Create a Rotation command
+            </summary>
+        </member>
+        <member name="T:TelloLibrary.Tello">
+            <summary>
+            A Class to use the DJI Tello.
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.Tello.CommandModeEnabled">
+            <summary>
+            Indicate if Command mode is active
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.Tello.LastException">
+            <summary>
+            Access the latest exception
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.Tello.State">
+            <summary>
+            Return the current TelloState
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.Tello.#ctor(System.String)">
+            <summary>
+            Create a Tello Object
+            </summary>
+            <param name="droneIP">The IP Address of the Tello Drone</param>
+        </member>
+        <member name="M:TelloLibrary.Tello.RecvTask">
+            <summary>
+            Running task that will receive messages from the Drone
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.Tello.Command">
+            <summary>
+            Command response : Wake up the Tello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.TakeOff">
+            <summary>
+            Auto TakeOff
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.Land">
+            <summary>
+            Land drone
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.StreamOn">
+            <summary>
+            Turn On Video Stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.StreamOff">
+            <summary>
+            Turn Off Video Stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.TurnClockwise(System.Int32)">
+            <summary>
+            Turn clockwise.
+            </summary>
+            <param name="degrees">Angle in degrees 1-360°</param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.TurnCounterClockwise(System.Int32)">
+            <summary>
+            Turn Counter clockwise.
+            </summary>
+            <param name="degrees">Angle in degrees 1-360°</param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.MoveUp(System.Int32)">
+            <summary>
+            Move Up
+            </summary>
+            <param name="distance">cm</param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.MoveDown(System.Int32)">
+            <summary>
+            Move Down
+            </summary>
+            <param name="distance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.MoveLeft(System.Int32)">
+            <summary>
+            Move Left
+            </summary>
+            <param name="distance">cm</param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.MoveRight(System.Int32)">
+            <summary>
+            Move Right
+            </summary>
+            <param name="distance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.MoveForward(System.Int32)">
+            <summary>
+            Move Forward
+            </summary>
+            <param name="distance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.MoveBackward(System.Int32)">
+            <summary>
+             Move Backward
+            </summary>
+            <param name="distance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.Tello.Dispose">
+            <summary>
+            Dispose the Tello object
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.Tello.PulseTask">
+            <summary>
+            Pulse Task
+            Send empty Command to the drone, every Tello.TimeOut.Pulse ms if, in the meantime, no message has been sent.
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.Tello.StartPulse">
+            <summary>
+            Start the Pulse Task, called when the TakeOff command is sent
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.Tello.StopPulse">
+            <summary>
+            Stop the Pulse Task, called when Land command is sent
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloAction.Name">
+            <summary>
+            Description of the command. Used for loggin (not implemented now), maybe used in Log File ??
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloAction.Command">
+            <summary>
+            The command string sent to the Tello
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloAction.Type">
+            <summary>
+            Waht kind of Command is it ?
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloAction.ServerResponse">
+            <summary>
+            The Tello response to the Command (the original string)
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloAction.Response">
+            <summary>
+            The Tello response to the Command (OK/FAIL)
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.TelloAction.#ctor(TelloLibrary.Tello,System.String,System.String,TelloLibrary.TelloAction.ActionTypes)">
+            <summary>
+            Create a Tello Action
+            </summary>
+            <param name="drone">The Tello object that will send the command, and give a response</param>
+            <param name="name">The description of the Command</param>
+            <param name="command">The Command sent to the Tello</param>
+            <param name="type">The type of this Action</param>
+        </member>
+        <member name="M:TelloLibrary.TelloAction.SendCommand(System.Int32)">
+            <summary>
+            Send the Command
+            </summary>
+            <param name="waitTime">The TimeOut of the Response</param>
+            <returns></returns>
+        </member>
+        <member name="M:TelloLibrary.TelloAction.SendCommand(TelloLibrary.Tello.TimeOut)">
+            <summary>
+            Send the Command 
+            </summary>
+            <param name="waitTime">The TimeOut of the Response, Tello.TimeOut.Standard per default</param>
+            <returns></returns>
+        </member>
+        <member name="T:TelloLibrary.TelloState">
+            <summary>
+            State of the Tello
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.State">
+            <summary>
+            A String indicating the current state of the Tello
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.mid">
+            <summary>
+            The ID of the mission Pad
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.x">
+            <summary>
+            The "x" coordinate detected on the Mission Pad.
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.y">
+            <summary>
+            The "y" coordinate detected on the Mission Pad.
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.z">
+            <summary>
+            The "z" coordinate detected on the Mission Pad.
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.pitch">
+            <summary>
+            The degree of the attitude pitch
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.roll">
+            <summary>
+            The degree of the attitude roll
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.yaw">
+            <summary>
+            The degree of the attitude yaw
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.vgx">
+            <summary>
+            The speed of "x" axis
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.vgy">
+            <summary>
+            The speed of "y" axis
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.vgz">
+            <summary>
+            The speed of "z" axis
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.templ">
+            <summary>
+            The lowest temperature in degree Celsius
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.temph">
+            <summary>
+            The highest temperature in degree Celsius
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.tof">
+            <summary>
+            The time of flight distance in cm
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.height">
+            <summary>
+            The height in cm
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.bat">
+            <summary>
+            The percentage of the current battery level
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.baro">
+            <summary>
+            The barometer measurement in cm
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.time">
+            <summary>
+            The amount of time the motor has been used
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.agx">
+            <summary>
+            The acceleration of the "x" axis
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.agy">
+            <summary>
+            The acceleration of the "x" axis
+            </summary>
+        </member>
+        <member name="P:TelloLibrary.TelloState.agz">
+            <summary>
+            The acceleration of the "x" axis
+            </summary>
+        </member>
+        <member name="M:TelloLibrary.TelloUdpClient.#ctor(System.String)">
+            <summary>
+            Create a UDPClient to use with Tello
+            </summary>
+            <param name="droneIP">The IPAddress of the Drone</param>
+        </member>
+    </members>
+</doc>
