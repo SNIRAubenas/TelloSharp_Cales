@@ -34,7 +34,7 @@ namespace TelloSharp
                         drone.Battery();
                         break;
                     case 3:
-                        drone.TakeOff();
+                    drone.TakeOff();
                         break;
                     case 4:
                         drone.Land();
